@@ -9,6 +9,14 @@ This is a blogging application.
 
 Quotes displayed are fetched from this [Quotes Api](http://quotes.stormconsultancy.co.uk/random.json)
 
+## Technologies Used
+
+- Flask
+- Python
+- Postgresql
+- HTML
+- CSS
+
 ## Author
 Tom Koech
 
