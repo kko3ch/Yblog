@@ -7,7 +7,7 @@ This is a blogging application.
 - Users can comment on articles
 - Writers can create an account and blog about their favorite topics
 
-Quotes displayed are fetched from this [Quotes Api](http://quotes.stormconsultancy.co.uk/random.json)
+The app consumes quotes data from this [Quotes Api](http://quotes.stormconsultancy.co.uk/random.json)
 
 ## Technologies Used
 
