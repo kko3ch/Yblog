@@ -11,25 +11,12 @@ def get_random_quote():
         quote_data = url.read()
         quote_response = json.loads(quote_data)
 
-        quote_results = None
+        id = quote_response.get('id')
+        author = quote_response.get('author')
+        quote = quote_response.get('quote')
+        
+        quote_object = Quote(id,author,quote)
 
-        if quote_response:
-            resonse_info = quote_response
-            quote_results = process_quote(resonse_info)
+        print('author: ',quote_object.author)
 
-        return quote_results
-
-def process_quote(respone_quote):
-    '''
-    function that processes data from request
-    '''
-    quote_result = []
-
-    id = respone_quote.get('id')
-    author = respone_quote.get('author')
-    quote = respone_quote.get('quote')
-
-    quote_object = Quote(id,author,quote)
-    quote_result.append(quote_object)
-
-    return quote_result 
+    return quote_object
