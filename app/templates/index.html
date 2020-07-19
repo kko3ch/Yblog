@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="row">
+    <div class="container">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-center">
+            <div class="card" style="border-left: 2px solid brown; padding: 3px;border-right: 2px solid teal; font-family: monospace;">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 style="color: teal;">{{ quote.author }}</h3>
+                    </div>
+                    <div class="card-text">
+                        <p>{{ quote.quote }}</p>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<hr>
+{% block footer%}
+    {% include 'footer.html' %}
+{% endblock%}
+
+{% endblock%}

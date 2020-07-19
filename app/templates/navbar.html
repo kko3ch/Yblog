@@ -1,0 +1,28 @@
+<div class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" style="padding: 20px; height: 200px;background-image: url('/static/photos/nav.jpg'); background-size: cover; background-repeat: no-repeat;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: black;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar" style="color: white;"></span>
+                <span class="icon-bar" style="color: white;"></span>
+                <span class="icon-bar" style="color: white;"></span>
+            </button>
+            <a style="font-size: 70px;margin-top: 40px;" class="navbar-brand" href="/">Y<span style="font-size: 30px; color: brown;">blog</span></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li><a style="font-size: 20px;" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+                <li><a style="font-size: 20px;" href="{{url_for('main.newblog')}}">Blog</a></li>
+                <li><a style="font-size: 20px;" href="{{url_for('auth.logout')}}">Sign out</a></li>
+                {%endif%}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <span class="navbar-text" style="font-size: 20px;">
+                    Are you a writer?
+                  </span>
+                <li><a style="font-size: 20px; color:darkgreen;" href="{{url_for('auth.login')}}">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

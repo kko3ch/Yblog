@@ -1,5 +1,6 @@
 import urllib.request,json
 from . models import Quote
+import requests
 
 def get_random_quote():
     '''
@@ -17,6 +18,24 @@ def get_random_quote():
         
         quote_object = Quote(id,author,quote)
 
-        print('author: ',quote_object.author)
-
     return quote_object
+
+# def subscribe_user(email, user_email, api_key):
+
+# 	return requests.post(
+# 		"https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages",
+# 		auth=("api", api_key),
+# 		data={"from": user_email,
+# 			"to": ["bar@example.com", "YOU@YOUR_DOMAIN_NAME"],
+# 			"subject": "Hello",
+# 			"text": "Testing some Mailgun awesomness!"})                                )
+
+
+
+
+
+
+
+
+
+

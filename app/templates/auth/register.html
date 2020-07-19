@@ -1,0 +1,12 @@
+{% extends 'auth/auth-base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block content %}
+<div class="row" style="height: 670px; width: 100%; background-image: url('/static/photos/register.jpg');background-repeat: no-repeat; background-size: cover">
+      <div class="col-md-4"></div>  
+      <div class="col-md-4" style="margin-top: 10%;">
+            {{wtf.quick_form(registration_form)}}
+      </div>      
+      <div class="col-md-4"></div>
+</div>
+{% endblock%}
