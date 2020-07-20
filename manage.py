@@ -20,7 +20,7 @@ def test():
 
 @manager.shell
 def make_shell_context():
-    return dict(app = app, User = User, Post = Post, Comment = Comment)
+    return dict(db = db,app = app, User = User, Post = Post, Comment = Comment)
 
 if __name__ == '__main__':
     manager.run()
