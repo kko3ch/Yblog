@@ -20,8 +20,42 @@
     </div>
 </div>
 <hr>
-{% block footer%}
-    {% include 'footer.html' %}
-{% endblock%}
-
+<div class="row">
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    {% for post in post_list %}
+    <div class="flex-item">
+        <div class="card" style="width: 250px;cursor: pointer;padding: 15px;">
+            <img src="https://cdn.pixabay.com/photo/2012/05/07/13/22/camel-48445_960_720.png" class="card-img-top" alt="" width="250px" height="250px">
+            <div class="card-body">
+                <a style="color: black;font-size: 30px;" href="/post/{{ post.id }}" class="card-text">{{ post.title }}</a>
+                <p>{{ post.content | truncate(20) }}</p>
+                <div class="card-footer">
+                    <p>Posted: <small>{{ post.posted.strftime('%Y-%m-%d') }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<hr>
+<div class="row text-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <p style="color: brown; font-size: 20px;">Subscribe to our monthly newsletter</p>
+        <form action="POST">
+            <input type="email" required class="form-control" name="email" placeholder="Your email address">
+            <input style="background-color: black; color: white; margin-top: 10px;" type="submit" value="SUBSCRIBE">
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row" style="margin-top: 15px;background-color: black; padding: 20px; opacity: 0.9;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center" style="margin-top: 20px;">
+        <a style="color: white;" href="">About</a><br>
+        <a style="color: white;" href="">Contact</a>
+    </div>
+    <div class="col-md-4"></div>
+</div>
 {% endblock%}

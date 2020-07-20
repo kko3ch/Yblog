@@ -1,0 +1,69 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-5">
+        {% if user.profile_pic_path %}
+            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="thumbnail" style="width: 200px;border-radius: 200px;" height="200px"> {%else%}
+            <p>No profile picture</p>
+         {% endif %}
+         <hr>
+         <h4>{{ user.firstname }}  {{ user.lastname }} <span style="font-size: 10px; color: brown;">@{{ user.username }}</span></h4>
+         <p>Blogs : {{ user.posts.count() }}</p>
+    </div>
+     <div class="col-md-2 text-center">
+                <h4>Change profile image</h4>
+        <form style="margin-top: 20px;" action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data">
+            <input type="file" name="photo" class="form-control" required>
+            <input style="margin-top: 10px;" type="submit" class="btn">
+        </form>
+     </div>
+     <div class="col-md-1"></div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+        <h4 style="color: brown;">Your Blogs : </h4>
+    </div>
+    <div class="col-md-6"> 
+    {% if userblogs%}
+        {%for post in userblogs%}
+                <div class="card-body">
+                        {% if post.post_pic_path%}
+                        <img src="{{ post.post_pic_path }}" alt="" width="200px" height="200px" class="card-img-top">
+                        {% else%}
+                        <img src="https://cdn.pixabay.com/photo/2012/05/07/13/22/camel-48445_960_720.png" class="card-img-top" alt="" width="200px" height="200px">
+                        {% endif%}
+                    <div class="card-header">
+                        <b>{{post.title}}</b>
+                    </div>
+                    <div class="card-text">
+                        <p>{{post.content}}</p>
+                        {% if postcomments %}
+                            {% for comment in postcomments %}
+                                <h5 class="text-center">Comments</h5>
+                                <p>{{ comment.comment }}</p>
+                                <small>By: {{ comment.alias }}</small>
+                                <a class="btn" href="#">delete comment</a>
+                            {% endfor%}
+                        {% endif%}    
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+                            <small>{{ post.posted.strftime('%Y-%m-%d at %H:%M') }}</small>
+                            <a class="btn" href="/post/delete/{{ post.id }}">delete post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {%endfor%} 
+        {%endif%}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

@@ -12,17 +12,18 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                <li><a style="font-size: 20px;" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-                <li><a style="font-size: 20px;" href="{{url_for('main.newblog')}}">Blog</a></li>
-                <li><a style="font-size: 20px;" href="{{url_for('auth.logout')}}">Sign out</a></li>
-                {%endif%}
+                <li><a  style="font-size: 20px; color:darkgreen;" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+                <li><a  style="font-size: 20px; color:darkgreen;" href="/user/newblog">Blog</a></li>
+                <li><a  style="font-size: 20px; color:darkgreen;" href="{{url_for('auth.logout')}}">Sign out</a></li>
             </ul>
+            {% else %}
             <ul class="nav navbar-nav navbar-right">
                 <span class="navbar-text" style="font-size: 20px;">
                     Are you a writer?
-                  </span>
+                </span>
                 <li><a style="font-size: 20px; color:darkgreen;" href="{{url_for('auth.login')}}">Sign in</a></li>
             </ul>
+            {%endif%}
         </div>
     </div>
 </div>
