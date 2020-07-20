@@ -51,11 +51,12 @@ class PhotoProfile(db.Model):
 
 class Post(db.Model):
     '''
-    Movie class to define blog post Objects
+    Blog class to define blog post Objects
     '''
     __tablename__ = 'post'
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String)
+    author = db.Column(db.String)
     content = db.Column(db.String) 
     post_pic_path = db.Column(db.String())
     post_pic = db.relationship('PostPhoto',backref = 'user',lazy = "dynamic")
@@ -67,8 +68,13 @@ class Post(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete_post(self):
+        db.session.delete(self)
+        db.session.commit()
+
     def __repr__(self):
-        return f'Post {self.post}'
+
+        return f'Post {self.title}'
 
 class PostPhoto(db.Model):
     '''
@@ -86,6 +92,7 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String)
+    alias = db.Column(db.String())
     posted = db.Column(db.Time,default=datetime.utcnow())
     post_id = db.Column(db.Integer,db.ForeignKey('post.id'))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
