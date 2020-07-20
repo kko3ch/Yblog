@@ -68,6 +68,5 @@ def update_pic(uname):
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
-        user_photo = PhotoProfile(pic_path = path,user = user)
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
