@@ -60,7 +60,7 @@ def profile(uname):
         abort(404)
     return render_template("Profile/profile.html", user = user, userblogs = userblogs,)
 
-@main.route('/user/<uname>/update_pic',methods= ['POST'])
+@main.route('/user/<uname>/update_pic',methods= ['GET','POST'])
 @login_required
 def update_pic(uname):
     user = User.query.filter_by(username = uname).first()
