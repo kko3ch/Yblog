@@ -29,6 +29,10 @@ Tom Koech
 Clone the app and make awesome changes
 `git clone https://github.com/Ko3ch/Yblog`
 
+## Deployment
+
+Heroku did it. [yblog3.herokuapp.com](https://yblog3.herokuapp.com/)
+
 ## License
 
 MIT License
