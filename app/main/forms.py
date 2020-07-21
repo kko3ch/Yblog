@@ -16,3 +16,8 @@ class CommentsForm(FlaskForm):
    comment = TextAreaField('Leave a comment',validators=[Required()])
    alias = StringField('Alias',validators=[Required()])
    submit = SubmitField('Add Comment')
+
+class SubscribeUserForm(FlaskForm):
+    # email = StringField('Email Address',validators=[Required(),Email()])
+     # # submit = SubmitField('SUBSCRIBE')
+    pass     

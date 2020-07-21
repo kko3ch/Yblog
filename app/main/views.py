@@ -1,19 +1,27 @@
 from flask import render_template,request,redirect,url_for,abort
 from flask_login import login_required,current_user
-from .. requestquote import get_random_quote
+from .. request import get_random_quote,subscribe_user
 from .. import db,photos
 from . import main
-from . forms import Post_Form,CommentsForm
-from ..models import User,Post,Comment,PhotoProfile,PostPhoto
+from . forms import Post_Form,CommentsForm,SubscribeUserForm
+from ..models import User,Post,Comment,PhotoProfile,PostPhoto,Subscribed
 
 @main.route('/', methods = ["GET","POST"])
 def index():
     '''
     function that define route to index page
     '''
+    form = SubscribeUserForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        new_subscriber = Subscribed(email = email)
+        db.session.commit()
+        subscribe_user(new_subscriber)
+        return redirect(url_for('main.index'))
+
     quote = get_random_quote()
     post_list = Post.query.all()
-    return render_template('index.html',quote = quote, post_list = post_list)
+    return render_template('index.html',quote = quote, post_list = post_list, form = form)
 
 @main.route('/user/userprofile')
 def home():
@@ -70,3 +78,5 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+    
+
