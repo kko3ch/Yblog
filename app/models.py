@@ -116,3 +116,11 @@ class Quote:
         self.author = author
         self.quote = quote
     
+class Subscribed(db.Model):
+    __tablename__ = 'subscribers'
+    id = db.Column(db.Integer,primary_key = True)
+    email = db.Column(db.String(255),unique = True,index = True)
+    timestamp = db.Column(db.DateTime, default = datetime.utcnow)
+
+    def __repr__(self):
+      return f'email:{self.email}'
