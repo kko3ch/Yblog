@@ -4,6 +4,8 @@ class Config:
 
     QUOTE_API_BASE_URL ='http://quotes.stormconsultancy.co.uk/random.json'
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    MAILCHIMP_API_KEY= os.environ.get('MAILCHIMP_API_KEY')
+    MAILCHIMP_EMAIL_LIST_ID= os.environ.get('MAILCHIMP_EMAIL_LIST_ID')
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST ='app/static/photos'
