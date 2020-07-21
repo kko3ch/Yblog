@@ -51,6 +51,7 @@ def post(post_id):
         comment = comment_form.comment.data
         new_comment = Comment(alias = alias,comment = comment,post_id = post_id)
         new_comment.save_comment()
+        return redirect(url_for('main.index'))
     return render_template('singleblog.html',comment_form = comment_form,comments = comments, post = post,current_user = current_user)
 
 @main.route('/post/delete/<int:post_id>/',methods= ['GET','POST'])
